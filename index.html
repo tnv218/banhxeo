@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Banh xeo Calculator</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Price</th>
+          <th>Qty</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(item, index) in items" :key="index">
+          <td>{{ item.name }}</td>
+          <td>{{ item.price }}</td>
+          <input type="number" class="form-control" v-model="item.quantity" @input="calculateTotal" :value="item.quantity || ''">
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td></td>
+          <td>{{ total }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        items: [
+          { name: 'Tôm thịt', price: 9, quantity: 0 },
+          { name: 'Nấm', price: 8, quantity: 0 },
+          { name: 'Trứng', price: 9, quantity: 0 },
+          { name: 'Bò', price: 14, quantity: 0 },
+          { name: 'Mực', price: 12, quantity: 0 },
+          { name: 'Ốp la tôm thịt', price: 12, quantity: 0 },
+          { name: 'Ốp la bò', price: 18, quantity: 0 },
+        ],
+        total: 0
+      },
+      methods: {
+        calculateTotal() {
+          this.total = this.items.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+        }
+      },
+      mounted() {
+        this.calculateTotal()
+      }
+    })
+  </script>
+</body>
+</html>

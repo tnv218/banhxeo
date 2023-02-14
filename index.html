@@ -24,12 +24,12 @@
     <table class="table table-bordered">
       <tbody>
         <tr>
-          <td style="font-weight: bold; color: red;">Tổng: </td>
+          <td style="font-weight: bold; color: red; width: 100px;">Tổng: </td>
           <td></td>
           <td style="font-weight: bold; color: red;">{{ total }}</td>
         </tr>
         <tr v-for="(item, index) in items" :key="index">
-          <td>{{ item.name }}</td>
+          <td >{{ item.name }}</td>
           <td>{{ item.price }}</td>
           <td>
             <template v-if="item.quantity">

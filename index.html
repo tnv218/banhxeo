@@ -24,11 +24,11 @@
     <table class="table table-bordered">
       <tbody>
         <tr>
-          <td style="font-weight: bold; color: red; width: 110px;">Tổng: </td>
+          <td style="font-weight: bold; color: red; width: 100px;">Tổng: </td>
           <td style="font-weight: bold; color: red;">{{ total }}</td>
         </tr>
         <tr v-for="(item, index) in items" :key="index">
-          <td >{{ item.name }}</td>
+          <td style="padding: 2px">{{ item.name }}</td>
           <td style="padding: 2px">
             <template v-if="item.quantity">
               <input type="number" class="form-control" v-model="item.quantity" @input="calculateTotal" style="width: 45px; display: inline-block;">

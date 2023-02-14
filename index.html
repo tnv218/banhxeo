@@ -30,10 +30,18 @@
           <td>{{ item.price }}</td>
           <td>
             <template v-if="item.quantity">
-              <input type="number" class="form-control" v-model="item.quantity" @input="calculateTotal">
+              <input type="number" class="form-control" v-model.number="item.quantity" @input="calculateTotal">
+              <div class="d-flex justify-content-between">
+                <button class="btn btn-primary mx-1" @click="item.quantity = 3">3</button>
+                <button class="btn btn-primary mx-1" @click="item.quantity = 5">5</button>
+              </div>
             </template>
             <template v-else>
-              <input type="number" class="form-control" v-model="item.quantity" @input="calculateTotal" value="1">
+              <input type="number" class="form-control" v-model.number="item.quantity" @input="calculateTotal" value="1">
+              <div class="d-flex justify-content-between">
+                <button class="btn btn-primary mx-1" @click="item.quantity = 3">3</button>
+                <button class="btn btn-primary mx-1" @click="item.quantity = 5">5</button>
+              </div>
             </template>
           </td>
         </tr>        

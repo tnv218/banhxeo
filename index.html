@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,43 +9,43 @@
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
   <style>
     @media only screen and (max-width: 576px) {
-      .table td, .table th {
+
+      .table td,
+      .table th {
         font-size: 1.3rem;
       }
     }
   </style>
 </head>
+
 <body>
   <div class="container my-5">
     <button class="btn btn-danger mb-3" @click="clearData">Tạo Mới</button>
     <table class="table table-bordered">
-        <tbody>
-          <tr>
-            <td style="font-weight: bold; color: red;">Tổng: </td>
-            <td></td>
-            <td style="font-weight: bold; color: red;">{{ total }}</td>           
-          </tr>
+      <tbody>
+        <tr>
+          <td style="font-weight: bold; color: red;">Tổng: </td>
+          <td></td>
+          <td style="font-weight: bold; color: red;">{{ total }}</td>
+        </tr>
         <tr v-for="(item, index) in items" :key="index">
           <td>{{ item.name }}</td>
           <td>{{ item.price }}</td>
           <td>
             <template v-if="item.quantity">
               <input type="number" class="form-control" v-model.number="item.quantity" @input="calculateTotal">
-              <div class="d-flex justify-content-between">
-                <button class="btn btn-primary mx-1" @click="item.quantity = 3">3</button>
-                <button class="btn btn-primary mx-1" @click="item.quantity = 5">5</button>
-              </div>
+              <button class="btn btn-primary" style="margin-right: 10px" @click="addQuantity(item, 3)">3</button>
+              <button class="btn btn-primary" style="margin-right: 10px" @click="addQuantity(item, 5)">5</button>
             </template>
             <template v-else>
-              <input type="number" class="form-control" v-model.number="item.quantity" @input="calculateTotal" value="1">
-              <div class="d-flex justify-content-between">
-                <button class="btn btn-primary mx-1" @click="item.quantity = 3">3</button>
-                <button class="btn btn-primary mx-1" @click="item.quantity = 5">5</button>
-              </div>
+              <input type="number" class="form-control" v-model.number="item.quantity" @input="calculateTotal"
+                value="1">
+              <button class="btn btn-primary" style="margin-right: 10px" @click="addQuantity(item, 3)">3</button>
+              <button class="btn btn-primary" style="margin-right: 10px" @click="addQuantity(item, 5)">5</button>
             </template>
           </td>
-        </tr>        
-        
+        </tr>
+
       </tbody>
     </table>
   </div>
@@ -77,7 +77,12 @@
         clearData() {
           this.items.forEach(item => item.quantity = '')
           this.calculateTotal()
+        },
+        addQuantity(item, value) {
+          item.quantity += value;
+          this.calculateTotal();
         }
+
       },
       mounted() {
         this.calculateTotal()
@@ -85,5 +90,6 @@
     })
   </script>
 </body>
+
 </html>
 Chỉnh sửa đoạn code trên để thêm 1 nút "Xóa Dữ liệu" vào trên cùng.

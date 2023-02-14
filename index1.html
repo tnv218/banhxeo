@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,21 +9,24 @@
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
   <style>
     @media only screen and (max-width: 576px) {
-      .table td, .table th {
+
+      .table td,
+      .table th {
         font-size: 1.3rem;
       }
     }
   </style>
 </head>
+
 <body>
   <div class="container my-5">
     <table class="table table-bordered">
-        <tbody>
-          <tr>
-            <td style="font-weight: bold; color: red;">Tổng: </td>
-            <td></td>
-            <td style="font-weight: bold; color: red;">{{ total }}</td>           
-          </tr>
+      <tbody>
+        <tr>
+          <td style="font-weight: bold; color: red;">Tổng: </td>
+          <td></td>
+          <td style="font-weight: bold; color: red;">{{ total }}</td>
+        </tr>
         <tr v-for="(item, index) in items" :key="index">
           <td>{{ item.name }}</td>
           <td>{{ item.price }}</td>
@@ -35,8 +38,7 @@
               <input type="number" class="form-control" v-model="item.quantity" @input="calculateTotal" value="1">
             </template>
           </td>
-        </tr>        
-        
+        </tr>
       </tbody>
     </table>
   </div>
@@ -72,5 +74,6 @@
     })
   </script>
 </body>
+
 </html>
 Chỉnh sửa đoạn code trên để thêm 1 nút "Xóa Dữ liệu" vào trên cùng.
